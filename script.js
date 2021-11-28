@@ -16,7 +16,7 @@ console.log(screens.length);
 
 console.log(screens.toLowerCase().split(" "));
 
-console.log(`Процент отката посреднику за работу ${fullPrice*rollback/100} рублей`);
+console.log(`Процент отката посреднику за работу ${fullPrice*(rollback/100)} рублей`);
 
 
 
