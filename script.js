@@ -1,5 +1,5 @@
 'use strict';
-let title = prompt('Как называется ваш проект?');
+let title = prompt('Как называется ваш проект?').trim();
 let screens = prompt('Какие типы экранов нужно разработать?');
 let screenPrice = prompt('Сколько будет стоить данная работа?');
 let rollback = 24;
@@ -40,11 +40,8 @@ const getRollbackMessage = function(price) {
     }
 };
 
-const trimTitle = function () {
-  return title.trimLeft();
-};
 const getTitle = function () {
-   return trimTitle()[0].toUpperCase() + title.slice(1);
+   return title[0].toUpperCase() + title.slice(1);
 };
 
 
