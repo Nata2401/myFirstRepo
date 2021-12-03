@@ -1,16 +1,16 @@
 'use strict';
-let title;
-let screens;
-let screenPrice;
-let rollback = 24;
-let adaptive;
-let service1;
-let service2;
-let servicePrice1;
-let servicePrice2;
-let fullPrice;
-let servicePercentPrice;
-let allServicePrices;
+// let title;
+// let screens;
+// let screenPrice;
+// let rollback = 24;
+// let adaptive;
+// let service1;
+// let service2;
+// let servicePrice1;
+// let servicePrice2;
+// let fullPrice;
+// let servicePercentPrice;
+// let allServicePrices;
 
 const appData = {
  title: '',
