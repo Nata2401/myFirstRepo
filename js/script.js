@@ -2,13 +2,13 @@
 const title = document.getElementsByTagName('h1');
 console.log(title[0]);
 
-const button1 = document.getElementsByClassName('handler_btn');
-console.log(button1[0]);
-const button2 = document.getElementsByClassName('handler_btn');
-console.log(button2[1]);
+const buttonHandler1 = document.getElementsByClassName('handler_btn')[0];
+console.log(buttonHandler1);
+const buttonHandler2 = document.getElementsByClassName('handler_btn')[1];
+console.log(buttonHandler2);
 
-const button3 =document.querySelector('.screen-btn');
-console.log(button3);
+const buttonScreen = document.querySelector('.screen-btn');
+console.log(buttonScreen);
 
 const otherItem1 = document.querySelectorAll('.other-items.percent');
 console.log(otherItem1);
@@ -21,12 +21,16 @@ console.log(inputRange);
 const span = document.querySelector('.rollback > .main-controls__range > .range-value');
 console.log(span);
 
-const totalInput = document.getElementsByClassName('total-input');
-console.log(totalInput[0]);
-console.log(totalInput[1]);
-console.log(totalInput[2]);
-console.log(totalInput[3]);
-console.log(totalInput[4]);
+const totalInput1 = document.getElementsByClassName('total-input')[0];
+console.log(totalInput1);
+const totalInput2 = document.getElementsByClassName('total-input')[1];
+console.log(totalInput2);
+const totalInput3 = document.getElementsByClassName('total-input')[2];
+console.log(totalInput3);
+const totalInput4 = document.getElementsByClassName('total-input')[3];
+console.log(totalInput4);
+const totalInput5 = document.getElementsByClassName('total-input')[4];
+console.log(totalInput5);
 
 let screens = document.querySelectorAll('.screen');
 console.log(screens);
