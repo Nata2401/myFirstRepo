@@ -7,7 +7,7 @@ const buttonPlus = document.querySelector('.screen-btn');
 
 const otherItemsPercent = document.querySelectorAll('.other-items.percent');
 const otherItemsNumber = document.querySelectorAll('.other-items.number');
-const select = document.querySelector('select');
+
 
 const inputRange = document.querySelector('.rollback > .main-controls__range > [type = range]');
 const span = document.querySelector('.rollback > .main-controls__range > .range-value');
@@ -17,14 +17,14 @@ const totalCount = document.getElementsByClassName('total-input')[1];
 const totalCountOther = document.getElementsByClassName('total-input')[2];
 const fullTotalCount = document.getElementsByClassName('total-input')[3];
 const totalCountRollback = document.getElementsByClassName('total-input')[4];
-const totalScreens = document.querySelector('.main-controls__input > [type = text]');
+
+const totalScreens = document.querySelector('.main-controls__input > [type=text]');
+const select = document.querySelectorAll('select');
 
 let screens = document.querySelectorAll('.screen');
 
-inputRange.addEventListener('input', function (event) {
-      span.textContent = event.target.value + '%';
-      appData.rollback = event.target.value;
-});
+//const newArray = [...select, totalScreens];
+
 
 const appData = {
  title: '',
@@ -51,12 +51,15 @@ const appData = {
  },
  isError: false,
  checkValues: function() {
-   const newArray = [...select, totalScreens];
-
+   //const newArray = [...select, totalScreens];
    appData.isError = false;
+   screens = document.querySelectorAll('.screen');
 
-   newArray.forEach(input => {
-     if(input.value === '' || select.value === '') {
+   screens.forEach(screen => {
+     const select = screen.querySelector('select');
+     const input = screen.querySelector('input[type=text]');
+
+     if(select.value ==='' || input.value ==='') {
        appData.isError = true;
      }
    });
@@ -66,6 +69,7 @@ const appData = {
   } else {
     alert('заполни поля');
   }
+
  },
  start: function() {
    appData.addScreens();
@@ -97,7 +101,6 @@ const appData = {
         price: +select.value * +input.value
       });
     });
-    console.log(appData.screens);
   },
   addServices: function() {
     otherItemsPercent.forEach(function(item) {
@@ -151,4 +154,8 @@ appData.init();
 startBtn.addEventListener('click', (e) => {
   e.preventDefault();
   appData.checkValues();
+});
+inputRange.addEventListener('input', function (event) {
+      span.textContent = event.target.value + '%';
+      appData.rollback = event.target.value;
 });
