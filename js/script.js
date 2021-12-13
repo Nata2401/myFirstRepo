@@ -18,12 +18,10 @@ const totalCountOther = document.getElementsByClassName('total-input')[2];
 const fullTotalCount = document.getElementsByClassName('total-input')[3];
 const totalCountRollback = document.getElementsByClassName('total-input')[4];
 
-const totalScreens = document.querySelector('.main-controls__input > [type=text]');
+const totalScreens = document.querySelector('.main-controls__input > input[type=text]');
 const select = document.querySelectorAll('select');
 
 let screens = document.querySelectorAll('.screen');
-
-//const newArray = [...select, totalScreens];
 
 
 const appData = {
