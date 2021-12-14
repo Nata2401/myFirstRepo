@@ -88,7 +88,7 @@ const appData = {
   addScreens: function () {
     screens = document.querySelectorAll('.screen');
 
-    screens.forEach(function(screen, index) {
+    screens.forEach((screen, index) => {
       const select = screen.querySelector('select');
       const input = screen.querySelector('input');
       const selectName = select.options[select.selectedIndex].textContent;
@@ -101,7 +101,7 @@ const appData = {
     });
   },
   addServices: function() {
-    otherItemsPercent.forEach(function(item) {
+    otherItemsPercent.forEach((item) => {
       const check = item.querySelector('input[type=checkbox]');
       const label = item.querySelector('label');
       const input= item.querySelector('input[type=text');
@@ -111,7 +111,7 @@ const appData = {
       }
     });
 
-    otherItemsNumber.forEach(function(item) {
+    otherItemsNumber.forEach((item) => {
       const check = item.querySelector('input[type=checkbox]');
       const label = item.querySelector('label');
       const input= item.querySelector('input[type=text');
@@ -153,7 +153,7 @@ startBtn.addEventListener('click', (e) => {
   e.preventDefault();
   appData.checkValues();
 });
-inputRange.addEventListener('input', function (event) {
+inputRange.addEventListener('input',  (event) => {
       span.textContent = event.target.value + '%';
       appData.rollback = event.target.value;
 });
