@@ -1,7 +1,7 @@
 'use strict';
 
 let title = document.getElementsByTagName('h1')[0];
-let btnCalc = document.getElementsByClassName("handler_btn")[0];
+let btnStart = document.getElementsByClassName("handler_btn")[0];
 let btnReset = document.getElementsByClassName("handler_btn")[1];
 let btnPlus = document.querySelector(".screen-btn");
 let number = document.querySelectorAll(".other-items.number");
@@ -32,7 +32,7 @@ const appData = {
 
     init: function(){
         this.addTitle();        
-        btnCalc.addEventListener('click', this.checkValues.bind(appData));
+        btnStart.addEventListener('click', this.checkValues.bind(appData));
         btnPlus.addEventListener('click', this.addScreenBlock);
         this.addRollback();
     },
@@ -179,7 +179,7 @@ const appData = {
             elem.disabled = true;
         });
 
-        btnCalc.style.display = "none";
+        btnStart.style.display = "none";
         btnReset.style.display = "block";
 
         btnReset.addEventListener('click', () => {
@@ -210,7 +210,7 @@ const appData = {
                 elem.checked = false;
             });
 
-            btnCalc.style.display = "block";
+            btnStart.style.display = "block";
             btnReset.style.display = "none";
             rollbackInput.value = "0";
             rangeValue.innerText = "0%";
