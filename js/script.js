@@ -1,28 +1,19 @@
 'use strict';
-const title = document.getElementsByTagName('h1')[0];
 
-const startBtn = document.getElementsByClassName('handler_btn')[0];
-const resetBtn = document.getElementsByClassName('handler_btn')[1];
-const buttonPlus = document.querySelector('.screen-btn');
-
-const otherItemsPercent = document.querySelectorAll('.other-items.percent');
-const otherItemsNumber = document.querySelectorAll('.other-items.number');
-
-
-const inputRange = document.querySelector('.rollback > .main-controls__range > input[type = range]');
-const span = document.querySelector('.rollback > .main-controls__range > .range-value');
-
-const total = document.getElementsByClassName('total-input')[0];
-const totalCount = document.getElementsByClassName('total-input')[1];
-const totalCountOther = document.getElementsByClassName('total-input')[2];
-const fullTotalCount = document.getElementsByClassName('total-input')[3];
-const totalCountRollback = document.getElementsByClassName('total-input')[4];
-
-const totalScreens = document.querySelector('.main-controls__input > input[type=text]');
-const select = document.querySelectorAll('select');
-
-let screens = document.querySelectorAll('.screen');
-
+let title = document.getElementsByTagName('h1')[0];
+let btnCalc = document.getElementsByClassName("handler_btn")[0];
+let btnReset = document.getElementsByClassName("handler_btn")[1];
+let btnPlus = document.querySelector(".screen-btn");
+let number = document.querySelectorAll(".other-items.number");
+let percent = document.querySelectorAll(".other-items.percent");
+let rollbackInput = document.querySelector(".rollback > div > input[type=range]");
+let rangeValue = document.querySelector(".rollback > div > span.range-value");
+let totalInputHtml = document.getElementsByClassName("total-input")[0];
+let totalInputScreens = document.getElementsByClassName("total-input")[1];
+let totalInputServices = document.getElementsByClassName("total-input")[2];
+let totalInputValue = document.getElementsByClassName("total-input")[3];
+let totalInputRollback = document.getElementsByClassName("total-input")[4];
+let screens = document.querySelectorAll(".screen");
 
 const appData = {
     screens: [],
@@ -41,8 +32,8 @@ const appData = {
 
     init: function(){
         this.addTitle();        
-        startBtn.addEventListener('click', this.checkValues.bind(appData));
-        buttonPlus.addEventListener('click', this.addScreenBlock);
+        btnCalc.addEventListener('click', this.checkValues.bind(appData));
+        btnPlus.addEventListener('click', this.addScreenBlock);
         this.addRollback();
     },
 
@@ -75,14 +66,14 @@ const appData = {
         if(!appData.isError){
             this.start();
         } else {
-            alert("заполни поля");
+            alert("Нужно заполнить поля!");
         }
     },
     
     showResult: function(){
-        total.value = this.screenPrice;
-        totalCountOther.value = this.servicePricesPercent + this.servicePricesNumber;
-        fullTotalCount.value = this.fullPrice;
+        totalInputHtml.value = this.screenPrice;
+        totalInputServices.value = this.servicePricesPercent + this.servicePricesNumber;
+        totalInputValue.value = this.fullPrice;
         this.addRollbackValue();
     },
 
@@ -110,7 +101,7 @@ const appData = {
     },
 
     addServices: function(){
-        otherItemsNumber.forEach(item => {
+        number.forEach(item => {
             const check = item.querySelector("input[type=checkbox]");
             const label = item.querySelector("label");
             const input = item.querySelector("input[type=text]");
@@ -120,7 +111,7 @@ const appData = {
             }
         });
 
-        otherItemsPercent.forEach(item => {
+        percent.forEach(item => {
             const check = item.querySelector("input[type=checkbox]");
             const label = item.querySelector("label");
             const input = item.querySelector("input[type=text]");
@@ -149,13 +140,13 @@ const appData = {
         this.count.forEach((screen) => {
             screenCount += +screen;
         });
-        totalCount.value = screenCount;
+        totalInputScreens.value = screenCount;
     },
 
     addRollback: function(){
-        inputRange.addEventListener('input', () => {
-            span.innerText = inputRange.value + "%";
-            this.rollback = inputRange.value;
+        rollbackInput.addEventListener('input', () => {
+            rangeValue.innerText = rollbackInput.value + "%";
+            this.rollback = rollbackInput.value;
         
             this.addRollbackValue();
         });       
@@ -164,7 +155,7 @@ const appData = {
     addRollbackValue: function() {
         this.servicePercentPrice = this.fullPrice - (this.fullPrice * (this.rollback/100));
 
-        totalCountRollback.value = this.servicePercentPrice; 
+        totalInputRollback.value = this.servicePercentPrice; 
     },
 
     titleCorrector: function (){
@@ -173,7 +164,7 @@ const appData = {
 
     makeDisable: function(){
         let viewsSelect = document.querySelectorAll("select[name=views-select]");
-        let inputText = document.querySelectorAll(".main-controls__item.screen > div > input[type=text]");
+        let inputText = document.querySelectorAll(".main-controls__item.screen > div > input");
         let inputCheckbox = document.querySelectorAll("input[type=checkbox]");
         
         inputText.forEach(elem => {
@@ -188,16 +179,21 @@ const appData = {
             elem.disabled = true;
         });
 
-        startBtn.style.display = "none";
-        resetBtn.style.display = "block";
+        btnCalc.style.display = "none";
+        btnReset.style.display = "block";
 
-        resetBtn.addEventListener('click', () => {
+        btnReset.addEventListener('click', () => {
             screens = document.querySelectorAll(".screen");
             screens.forEach((elem,index) => {
                 if(index > 0){
                     elem.remove();
                 }
             });
+            console.log(screens);
+            let g = screens[0];
+            screens = [];
+            screens.push(g);
+            console.log(screens);
             
             viewsSelect.forEach(elem => {
                 elem.disabled = false;
@@ -214,15 +210,13 @@ const appData = {
                 elem.checked = false;
             });
 
-            startBtn.style.display = "block";
-            resetBtn.style.display = "none";
-            inputRange.value = "0";
-            span.innerText = "0%";
-            
+            btnCalc.style.display = "block";
+            btnReset.style.display = "none";
+            rollbackInput.value = "0";
+            rangeValue.innerText = "0%";
 
             let mainTotal = document.querySelectorAll(".total-input");
-            console.log(mainTotal);
-            mainTotal.forEach((elem) => {
+            mainTotal.forEach((elem) =>{
                 elem.disabled = false;
                 elem.value = "0";
                 elem.disabled = true;
@@ -232,15 +226,24 @@ const appData = {
     },
     
     reset: function(){
-        this.addScreens();
-        this.addPrices.call(appData);
-        this.addRollback();
+        this.screens = [];
+        this.rollback = 0;
+        this.screenPrice = 0;
+        this.adaptive = true;
+        this.title = "";
+        this.servicePricesPercent = 0;
+        this.servicePricesNumber = 0;
+        this.fullPrice = 0;
+        this.servicePercentPrice = 0;
+        this.count = [];
+        this.servicesPercent = {};
+        this.servicesNumber = {};
         this.init();
     },
 
     logger: function() {
-      
          console.log(this.fullPrice);
+     
     }
 };
 appData.init();
