@@ -58,7 +58,7 @@ const appData = {
             const select = screen.querySelector("select");
             const input = screen.querySelector("input[type=text]");
 
-            if(select.value === "" || input.value === ""){
+            if(select.value === "" || input.value.trim() === ""){
                 this.isError = true;
             }
         });
