@@ -66,7 +66,7 @@ const appData = {
         if(!appData.isError){
             this.start();
         } else {
-            alert("Нужно заполнить поля!");
+            alert("заполни поля");
         }
     },
     
@@ -242,8 +242,7 @@ const appData = {
     },
 
     logger: function() {
-         console.log(this.fullPrice);
-     
+         console.log(this.fullPrice); 
     }
 };
 appData.init();
